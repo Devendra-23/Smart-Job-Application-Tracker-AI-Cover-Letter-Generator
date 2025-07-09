@@ -1,7 +1,50 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from typing import List
+from datetime import date
 
 app = FastAPI()
 
-@app.get("/")
-def read_root():
+# ✅ Allow frontend to talk to backend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# ✅ In-memory storage
+job_storage = []
+
+# ✅ Pydantic model
+class Job(BaseModel):
+    company: str
+    title: str
+    status: str
+    applied_date: date
+
+# ✅ Test GET route
+@app.get("/api/hello")
+def get_hello():
     return {"message": "Hello from FastAPI"}
+
+# ✅ POST route to receive jobs
+@app.post("/api/jobs")
+def create_job(job: Job):
+    job_id = len(job_storage) + 1
+    job_entry = {
+        "id": job_id,
+        "company": job.company,
+        "title": job.title,
+        "status": job.status,
+        "applied_date": str(job.applied_date),
+    }
+    job_storage.append(job_entry)
+    return {"message": "Job saved successfully", "job": job_entry}
+
+# ✅ GET route to return all jobs
+@app.get("/api/jobs")
+def get_jobs():
+    return {"jobs": job_storage}
