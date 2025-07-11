@@ -27,61 +27,96 @@ const JobForm = () => {
     const result = await response.json();
     console.log("Submitted:", result);
     alert("Submitted successfully!");
+    window.location.reload();
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-md mx-auto p-4 bg-white shadow rounded space-y-4"
+      className="bg-white shadow-md rounded p-6 space-y-4 w-full max-w-md"
     >
-      <h2 className="text-xl font-semibold">Add Job Application</h2>
+      <h2 className="text-2xl font-bold mb-4 text-blue-700">
+        Add Job Application
+      </h2>
 
-      <input
-        type="text"
-        name="company"
-        placeholder="Company Name"
-        value={formData.company}
-        onChange={handleChange}
-        className="w-full border p-2 rounded"
-        required
-      />
+      <div>
+        <label
+          htmlFor="company"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Company Name
+        </label>
+        <input
+          type="text"
+          name="company"
+          placeholder="Company Name"
+          value={formData.company}
+          onChange={handleChange}
+          className="w-full border px-4 py-2 rounded-lg focus:ring-2 focus:ring-blue-400"
+          required
+        />
+      </div>
 
-      <input
-        type="text"
-        name="title"
-        placeholder="Job Title"
-        value={formData.title}
-        onChange={handleChange}
-        className="w-full border p-2 rounded"
-        required
-      />
+      <div>
+        <label
+          htmlFor="title"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Job Title
+        </label>
+        <input
+          type="text"
+          name="title"
+          placeholder="Job Title"
+          value={formData.title}
+          onChange={handleChange}
+          className="w-full border px-4 py-2 rounded-lg focus:ring-2 focus:ring-blue-400"
+          required
+        />
+      </div>
 
-      <select
-        name="status"
-        value={formData.status}
-        onChange={handleChange}
-        className="w-full border p-2 rounded"
-      >
-        <option>Applied</option>
-        <option>Interviewing</option>
-        <option>Rejected</option>
-        <option>Offered</option>
-      </select>
+      <div>
+        <label
+          htmlFor="status"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Application Status
+        </label>
+        <select
+          name="status"
+          value={formData.status}
+          onChange={handleChange}
+          className="w-full border px-4 py-2 rounded-lg bg-white"
+        >
+          <option>Applied</option>
+          <option>Interviewing</option>
+          <option>Rejected</option>
+          <option>Offered</option>
+        </select>
+      </div>
 
-      <input
-        type="date"
-        name="applied_date"
-        value={formData.applied_date}
-        onChange={handleChange}
-        className="w-full border p-2 rounded"
-        required
-      />
+      <div>
+        <label
+          htmlFor="applied_date"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Applied Date
+        </label>
+        <input
+          type="date"
+          name="applied_date"
+          value={formData.applied_date}
+          onChange={handleChange}
+          className="w-full border px-4 py-2 rounded-lg"
+          required
+        />
+      </div>
 
       <button
         type="submit"
-        className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition"
       >
-        Submit
+        ➕ Submit
       </button>
     </form>
   );
