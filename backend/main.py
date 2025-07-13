@@ -1,8 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
 from datetime import date
+
 
 app = FastAPI()
 
@@ -48,3 +49,13 @@ def create_job(job: Job):
 @app.get("/api/jobs")
 def get_jobs():
     return {"jobs": job_storage}
+
+
+# ✅ NEW: Update job status
+@app.put("/api/jobs/{job_id}")
+def update_job_status(job_id: int, updated: Job):
+    for job in job_storage:
+        if job["id"] == job_id:
+            job["status"] = updated.status
+            return {"message": "Job updated", "job": job}
+    raise HTTPException(status_code=404, detail="Job not found")
