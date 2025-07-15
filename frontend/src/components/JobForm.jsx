@@ -33,7 +33,7 @@ const JobForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white shadow-md rounded p-6 space-y-4 w-full max-w-md"
+      className="bg-white shadow-lg rounded-2xl p-6 space-y-5 w-full max-w-md"
     >
       <h2 className="text-2xl font-bold mb-4 text-blue-700">
         Add Job Application
@@ -114,7 +114,7 @@ const JobForm = () => {
 
       <button
         type="submit"
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition"
+        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-all"
       >
         ➕ Submit
       </button>

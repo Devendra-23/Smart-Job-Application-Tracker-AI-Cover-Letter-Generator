@@ -42,26 +42,29 @@ const JobList = () => {
   };
 
   return (
-    <div className="bg-white shadow-lg rounded-xl p-6 w-full max-w-3xl overflow-auto">
-      <h2 className="text-2xl font-bold mb-4 text-blue-700">
+    <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-3xl overflow-auto">
+      <h2 className="text-2xl font-bold mb-6 text-blue-800 text-center">
         📄 Tracked Applications
       </h2>
-      <div className="flex gap-4 mb-4 text-sm text-gray-600">
-        <div>
-          <span className="inline-block w-3 h-3 rounded-full bg-yellow-300 mr-1"></span>
-          Applied
-        </div>
-        <div>
-          <span className="inline-block w-3 h-3 rounded-full bg-blue-300 mr-1"></span>
-          Interviewing
-        </div>
-        <div>
-          <span className="inline-block w-3 h-3 rounded-full bg-green-300 mr-1"></span>
-          Offered
-        </div>
-        <div>
-          <span className="inline-block w-3 h-3 rounded-full bg-red-300 mr-1"></span>
-          Rejected
+
+      <div className="flex justify-center gap-4 mb-6 text-sm font-medium">
+        <div className="flex gap-4 mb-4 text-sm text-gray-600">
+          <div>
+            <span className="inline-block w-3 h-3 rounded-full bg-yellow-300 mr-1"></span>
+            Applied
+          </div>
+          <div>
+            <span className="inline-block w-3 h-3 rounded-full bg-blue-300 mr-1"></span>
+            Interviewing
+          </div>
+          <div>
+            <span className="inline-block w-3 h-3 rounded-full bg-green-300 mr-1"></span>
+            Offered
+          </div>
+          <div>
+            <span className="inline-block w-3 h-3 rounded-full bg-red-300 mr-1"></span>
+            Rejected
+          </div>
         </div>
       </div>
 
